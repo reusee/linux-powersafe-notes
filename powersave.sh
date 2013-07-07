@@ -6,13 +6,15 @@ for i in /sys/bus/pci/devices/*/power/control ; do
   echo auto > ${i}
 done
 
-for i in /sys/bus/usb/devices/*/power/control ; do
-  echo auto > ${i}
-done
+#for i in /sys/bus/usb/devices/*/power/control ; do
+#  echo auto > ${i}
+#done
 
 for i in /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor ; do
   echo ondemand > ${i}
 done
 
-echo 5 > /sys/module/snd_hda_intel/parameters/power_save
+echo 30 > /sys/module/snd_hda_intel/parameters/power_save
 #echo N > /sys/module/snd_hda_intel/parameters/power_save_controller
+
+echo dynpm > /sys/class/drm/card0/device/power_method
